@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = {'id', 'username', 'password'}
+        fields = ('id', 'username', 'password')
         extra_kwargs = {'password': {'write_only': True, 'required': True}}
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
@@ -17,4 +17,4 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = {'id', 'title', 'created_at', 'updated_at'}
+        fields = ('id', 'title', 'created_at', 'updated_at')
